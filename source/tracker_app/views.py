@@ -47,7 +47,6 @@ class UpdateView(TemplateView):
     template_name = 'update.html'
 
     def get_context_data(self, **kwargs):
-        print(kwargs)
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
         kwargs['task'] = task
         form = TaskForm(initial={
@@ -57,7 +56,6 @@ class UpdateView(TemplateView):
             'type': task.type
         })
         kwargs['form'] = form
-        print(kwargs)
         return super().get_context_data(**kwargs)
 
     def post(self, request, **kwargs):
@@ -73,5 +71,19 @@ class UpdateView(TemplateView):
         kwargs['task'] = task
         kwargs['form'] = form
         return super().get_context_data(**kwargs)
+
+
+class DeleteView(TemplateView):
+    template_name = 'delete.html'
+
+    def get_context_data(self, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        kwargs['task'] = task
+        return super().get_context_data(**kwargs)
+
+    def post(self, request, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        task.delete()
+        return redirect("index")
 
 
