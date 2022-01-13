@@ -42,3 +42,36 @@ class CreateView(View):
             return redirect('view', pk=new_task.pk)
         return render(request, 'create.html', {"form": form})
 
+
+class UpdateView(TemplateView):
+    template_name = 'update.html'
+
+    def get_context_data(self, **kwargs):
+        print(kwargs)
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        kwargs['task'] = task
+        form = TaskForm(initial={
+            'summary': task.summary,
+            'description': task.description,
+            'status': task.status,
+            'type': task.type
+        })
+        kwargs['form'] = form
+        print(kwargs)
+        return super().get_context_data(**kwargs)
+
+    def post(self, request, **kwargs):
+        form = TaskForm(data=request.POST)
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        if form.is_valid():
+            task.summary = request.POST.get('summary')
+            task.description = request.POST.get('description')
+            task.type_id = int(request.POST.get('type'))
+            task.status_id = int(request.POST.get('status'))
+            task.save()
+            return redirect('view', pk=kwargs.get('pk'))
+        kwargs['task'] = task
+        kwargs['form'] = form
+        return super().get_context_data(**kwargs)
+
+
