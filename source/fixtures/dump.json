@@ -1,0 +1,104 @@
+[
+{
+    "model": "tracker_app.task",
+    "pk": 1,
+    "fields": {
+        "summary": "Закончить домашку",
+        "description": "К концу дня закончить домашку",
+        "type": 1,
+        "status": 2,
+        "created_at": "2022-01-13",
+        "updated_at": "2022-01-13"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 2,
+    "fields": {
+        "summary": "Придумать 4 задачи",
+        "description": "Придумать 4 задачи с разными статусами и типами",
+        "type": 1,
+        "status": 2,
+        "created_at": "2022-01-13",
+        "updated_at": "2022-01-13"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 4,
+    "fields": {
+        "summary": "Запилить соло на клавиатуре",
+        "description": "",
+        "type": 3,
+        "status": 3,
+        "created_at": "2022-01-13",
+        "updated_at": "2022-01-13"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 5,
+    "fields": {
+        "summary": "Закипятить чайник",
+        "description": "закипятить воду для чая",
+        "type": 1,
+        "status": 1,
+        "created_at": "2022-01-13",
+        "updated_at": "2022-01-13"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 6,
+    "fields": {
+        "summary": "выйти подышать свежим воздухом",
+        "description": "подышать воздухом",
+        "type": 3,
+        "status": 3,
+        "created_at": "2022-01-13",
+        "updated_at": "2022-01-13"
+    }
+},
+{
+    "model": "tracker_app.type",
+    "pk": 1,
+    "fields": {
+        "name": "Task"
+    }
+},
+{
+    "model": "tracker_app.type",
+    "pk": 2,
+    "fields": {
+        "name": "Bug"
+    }
+},
+{
+    "model": "tracker_app.type",
+    "pk": 3,
+    "fields": {
+        "name": "Enhancement"
+    }
+},
+{
+    "model": "tracker_app.status",
+    "pk": 1,
+    "fields": {
+        "name": "New"
+    }
+},
+{
+    "model": "tracker_app.status",
+    "pk": 2,
+    "fields": {
+        "name": "In progress"
+    }
+},
+{
+    "model": "tracker_app.status",
+    "pk": 3,
+    "fields": {
+        "name": "Done"
+    }
+}
+]
