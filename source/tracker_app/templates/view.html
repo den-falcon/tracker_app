@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>{{  task.summary }} ({{ task.status }})</h1>
+        <h3>Описание:</h3>
+        <p>{{ task.description }}</p>
+        <p>Тип: {{ task.type }}</p>
+        <p>Дата создания: {{ task.created_at }}</p>
+        <br>
+        <p><a href="{% url "index" %}" class="btn btn-outline-dark">На главную</a></p>
+    </div>
+{% endblock %}
