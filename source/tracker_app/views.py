@@ -37,7 +37,6 @@ class CreateView(View):
             task_type = request.POST.get('type')
             status = request.POST.get('status')
             new_task = Task.objects.create(summary=summary, description=description,
-                                           type_id=int(task_type),
                                            status_id=int(status))
             return redirect('view', pk=new_task.pk)
         return render(request, 'create.html', {"form": form})
