@@ -6,7 +6,7 @@
         <hr class="text-danger mt-1">
           <div class="row justify-content-start">
               {% for task in tasks %}
-                {% include 'partial/task_card.html' with summary=task.summary type=task.type description=task.description %}
+                {% include 'partial/task_card.html' %}
               {% endfor %}
           </div>
         </div>

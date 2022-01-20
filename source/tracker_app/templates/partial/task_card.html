@@ -1,12 +1,12 @@
 <div class="col-md-4 col-sm-6 mb-4">
   <div class="card h-100 ">
     <div class="d-flex card-header bg-danger text-light">
-        <span class="flex-grow-1"><a class="text-reset" href="{% url 'view' task.pk %}">{{ summary }} ({{ type }})</a></span>
-        <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-        <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+        <span class="flex-grow-1"><a class="text-reset" href="{% url 'view' task.pk %}">{{ task.summary }} ({{ task.type.all.0 }})</a></span>
+        <a class="text-reset" href="{% url 'update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+        <a class="text-reset" href="{% url 'delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
     </div>
     <div class="card-body">
-      <p class="card-text">{{ description }}</p>
+      <p class="card-text">{{ task.description }}</p>
     </div>
   </div>
 </div>

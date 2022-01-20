@@ -12,7 +12,7 @@ class Task(models.Model):
                                   through_fields=('task', 'type'))
 
     def __str__(self):
-        return f'{self.summary} ({self.type}) {self.created_at}'
+        return f'{self.summary} ({self.type.all()[0]}) {self.created_at}'
 
     class Meta:
         db_table = 'tasks'
