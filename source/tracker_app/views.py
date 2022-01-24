@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, RedirectView, FormView
 from django.urls import reverse
 
-# Create your views here.
 from .forms import TaskForm
 from .models import Task
 
@@ -25,22 +24,17 @@ class TaskView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-class CreateView(View):
-    def get(self, request):
-        form = TaskForm()
-        return render(request, 'create.html', {'form': form})
+class CreateView(FormView):
+    form_class = TaskForm
+    template_name = "create.html"
+    object = None
 
-    def post(self, request):
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            summary = request.POST.get('summary')
-            description = request.POST.get('description')
-            task_type = request.POST.get('type')
-            status = request.POST.get('status')
-            new_task = Task.objects.create(summary=summary, description=description,
-                                           status_id=int(status))
-            return redirect('view', pk=new_task.pk)
-        return render(request, 'create.html', {"form": form})
+    def form_valid(self, form):
+        self.object = form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('view', kwargs={"pk": self.object.pk})
 
 
 class UpdateView(FormView):
@@ -56,25 +50,12 @@ class UpdateView(FormView):
         context['task'] = self.task
         return context
 
-    # def get_initial(self):
-    #     initial = {}
-    #     for key in 'title', 'content', 'author':
-    #         initial[key] = getattr(self.article, key)
-    #     initial['tags'] = self.article.tags.all()
-    #     return initial
-
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['instance'] = self.task
         return kwargs
 
     def form_valid(self, form):
-        # tags = form.cleaned_data.pop('tags')
-        # for key, value in form.cleaned_data.items():
-        #     if value is not None:
-        #         setattr(self.article, key, value)
-        # self.article.save()
-        # self.article.tags.set(tags)
         self.task = form.save()
         return super().form_valid(form)
 

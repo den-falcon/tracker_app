@@ -33,8 +33,8 @@ class Type(models.Model):
 
 
 class TaskType(models.Model):
-    task = models.ForeignKey('tracker_app.Task', related_name='task_types', on_delete=models.PROTECT, verbose_name='Задача')
-    type = models.ForeignKey('tracker_app.Type', related_name='type_tasks', on_delete=models.PROTECT, verbose_name='Тип')
+    task = models.ForeignKey('tracker_app.Task', related_name='task_types', on_delete=models.CASCADE, verbose_name='Задача')
+    type = models.ForeignKey('tracker_app.Type', related_name='type_tasks', on_delete=models.CASCADE, verbose_name='Тип')
 
     def __str__(self):
         return f'{self.task} | {self.type}'

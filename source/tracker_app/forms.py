@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import widgets
 
-from .models import Task
+from .models import Task, Type
 
 
 # class TaskForm(forms.Form):
@@ -17,6 +17,9 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         exclude = []
+        widgets = {
+            'type': forms.CheckboxSelectMultiple
+        }
 
     def clean(self):
         cleaned_data = super().clean()
