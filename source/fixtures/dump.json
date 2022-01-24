@@ -300,3 +300,188 @@
     }
 }
 ]
+[
+{
+    "model": "tracker_app.task",
+    "pk": 1,
+    "fields": {
+        "summary": "Закончить домашку",
+        "description": "К концу дня закончить домашку",
+        "status": 1,
+        "created_at": "2022-01-13",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 10,
+    "fields": {
+        "summary": "Придумать 4 задачи",
+        "description": "Придумать 4 задачи и добавить их в базу данных",
+        "status": 1,
+        "created_at": "2022-01-24",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 11,
+    "fields": {
+        "summary": "Купить энергетик",
+        "description": "Сходить в ближайший магазин и купить энергетик",
+        "status": 2,
+        "created_at": "2022-01-24",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 12,
+    "fields": {
+        "summary": "Запилить соло bug на клавиатуре",
+        "description": "Запилить соло на клавиатуре не глядя на нее",
+        "status": 3,
+        "created_at": "2022-01-24",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 13,
+    "fields": {
+        "summary": "Закипятить чайник",
+        "description": "Набрать воды и поставить кипятиться воду",
+        "status": 3,
+        "created_at": "2022-01-24",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 14,
+    "fields": {
+        "summary": "Разобраться в связи многие ко многим",
+        "description": "Разобраться в связи многие ко многим и перестать путаться в запросах",
+        "status": 2,
+        "created_at": "2022-01-24",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 15,
+    "fields": {
+        "summary": "Вот это совпадение!!!",
+        "description": "Вот это совпадение!!!",
+        "status": 1,
+        "created_at": "2022-01-24",
+        "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.type",
+    "pk": 1,
+    "fields": {
+        "name": "Задача"
+    }
+},
+{
+    "model": "tracker_app.type",
+    "pk": 2,
+    "fields": {
+        "name": "Баг"
+    }
+},
+{
+    "model": "tracker_app.type",
+    "pk": 3,
+    "fields": {
+        "name": "Улучшение"
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 11,
+    "fields": {
+        "task": 1,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 21,
+    "fields": {
+        "task": 10,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 22,
+    "fields": {
+        "task": 10,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 23,
+    "fields": {
+        "task": 11,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 24,
+    "fields": {
+        "task": 12,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 28,
+    "fields": {
+        "task": 14,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 29,
+    "fields": {
+        "task": 13,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 30,
+    "fields": {
+        "task": 15,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.status",
+    "pk": 1,
+    "fields": {
+        "name": "Новая"
+    }
+},
+{
+    "model": "tracker_app.status",
+    "pk": 2,
+    "fields": {
+        "name": "Выполняется"
+    }
+},
+{
+    "model": "tracker_app.status",
+    "pk": 3,
+    "fields": {
+        "name": "Выполненна"
+    }
+}
+]
