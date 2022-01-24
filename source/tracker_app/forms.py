@@ -21,8 +21,8 @@ class TaskForm(forms.ModelForm):
             'type': forms.CheckboxSelectMultiple
         }
 
-    def clean(self):
-        cleaned_data = super().clean()
-        if cleaned_data['description'] == cleaned_data['summary']:
-            raise ValidationError("Text of the article should not duplicate it's summary!")
-        return cleaned_data
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     if cleaned_data['description'] == cleaned_data['summary']:
+    #         raise ValidationError("Text of the article should not duplicate it's summary!")
+    #     return cleaned_data

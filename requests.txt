@@ -1,0 +1,12 @@
+from django.utils import timezone
+from datetime import timedelta
+from django.db.models import Q, F
+from tracker_app.models import Task, Status, Type
+
+Task.objects.annotate(date_old=ExpressionWrapper(F('updated_at') + timedelta(weeks=1), output_field=DateField())).filter(updated_at__gte=timezone.now(), status__name='Выполненна').values('id', 'summary', 'type', 'status')
+Task.objects.filter(status__name__in=['Выполняется', 'Выполненна'], type__name__in=['Баг', 'Задача'])
+Task.objects.filter(Q(summary__icontains='bug') | Q(type__name='Баг'))
+Task.objects.filter(description=F('summary')) # Краткое описание полностью совпадает с полным описанием
+Task.objects.filter(description__contains=F('summary')) # Краткое описание частично совпадает с полным описанием
+
+
