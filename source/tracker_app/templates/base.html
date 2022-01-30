@@ -28,6 +28,9 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Добавить задачу</a>
                   </li>
+                  <li class="nav-item">
+                    {% include 'partial/simple_search.html' %}
+                  </li>
                 </ul>
               </div>
             </div>

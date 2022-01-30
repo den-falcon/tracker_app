@@ -1,0 +1,48 @@
+  <ul class="pagination mt-3">
+    <li class="page-item">
+      <a class="page-link" href="?page=1{% if search %}&search={{ search }}{% endif %}">
+        <span aria-hidden="true">&#8676;</span>
+      </a>
+    </li>
+    {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if search %}&search={{ search }}{% endif %}">
+                <span aria-hidden="true">&larr;</span>
+            </a>
+        </li>
+    {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">
+                <span aria-hidden="true">&larr;</span>
+            </a>
+        </li>
+    {% endif %}
+    <li class="page-item">
+        <form method="get">
+            <label class="input-group" for="page">
+                <input type="hidden" class="form-control" name="search" value="{{ search }}">
+                <input type="text" class="form-control w-10" name="page"  id="page" value="{{ page_obj.number }}">
+                <span class="input-group-text">из {{ page_obj.paginator.num_pages }}</span>
+                <input type="hidden" class="form-control">
+            </label>
+        </form>
+    </li>
+    {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if search %}&search={{ search }}{% endif %}">
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </li>
+    {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </li>
+    {% endif %}
+    <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}">
+                <span aria-hidden="true">&#8677;</span>
+            </a>
+    </li>
+  </ul>
