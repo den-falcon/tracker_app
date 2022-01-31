@@ -13,8 +13,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='task',
-            name='project',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='Tasks', to='tracker_app.project', verbose_name='Проэкт'),
+            name='projects',
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='Tasks', to='tracker_app.projects', verbose_name='Проэкт'),
             preserve_default=False,
         ),
     ]

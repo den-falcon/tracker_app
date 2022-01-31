@@ -1,306 +1,14 @@
 [
 {
-    "model": "tracker_app.task",
+    "model": "tracker_app.project",
     "pk": 1,
     "fields": {
-        "summary": "Закончить домашку",
-        "description": "К концу дня закончить домашку",
-        "type": 1,
-        "status": 2,
-        "created_at": "2022-01-13",
-        "updated_at": "2022-01-13"
+        "start_date": "2022-01-01",
+        "end_date": "2022-02-04",
+        "name": "Тракер",
+        "description": "Простой трекер задач"
     }
 },
-{
-    "model": "tracker_app.task",
-    "pk": 2,
-    "fields": {
-        "summary": "Придумать 4 задачи",
-        "description": "Придумать 4 задачи с разными статусами и типами",
-        "type": 1,
-        "status": 2,
-        "created_at": "2022-01-13",
-        "updated_at": "2022-01-13"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 4,
-    "fields": {
-        "summary": "Запилить соло на клавиатуре",
-        "description": "",
-        "type": 3,
-        "status": 3,
-        "created_at": "2022-01-13",
-        "updated_at": "2022-01-13"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 5,
-    "fields": {
-        "summary": "Закипятить чайник",
-        "description": "закипятить воду для чая",
-        "type": 1,
-        "status": 1,
-        "created_at": "2022-01-13",
-        "updated_at": "2022-01-13"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 6,
-    "fields": {
-        "summary": "выйти подышать свежим воздухом",
-        "description": "подышать воздухом",
-        "type": 3,
-        "status": 3,
-        "created_at": "2022-01-13",
-        "updated_at": "2022-01-13"
-    }
-},
-{
-    "model": "tracker_app.type",
-    "pk": 1,
-    "fields": {
-        "name": "Task"
-    }
-},
-{
-    "model": "tracker_app.type",
-    "pk": 2,
-    "fields": {
-        "name": "Bug"
-    }
-},
-{
-    "model": "tracker_app.type",
-    "pk": 3,
-    "fields": {
-        "name": "Enhancement"
-    }
-},
-{
-    "model": "tracker_app.status",
-    "pk": 1,
-    "fields": {
-        "name": "New"
-    }
-},
-{
-    "model": "tracker_app.status",
-    "pk": 2,
-    "fields": {
-        "name": "In progress"
-    }
-},
-{
-    "model": "tracker_app.status",
-    "pk": 3,
-    "fields": {
-        "name": "Done"
-    }
-}
-]
-[
-{
-    "model": "tracker_app.task",
-    "pk": 1,
-    "fields": {
-        "summary": "Закончить домашку",
-        "description": "К концу дня закончить домашку",
-        "status": 2,
-        "created_at": "2022-01-13",
-        "updated_at": "2022-01-20"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 10,
-    "fields": {
-        "summary": "Придумать 4 задачи",
-        "description": "Придумать 4 задачи и добавить их в базу данных",
-        "status": 1,
-        "created_at": "2022-01-24",
-        "updated_at": "2022-01-24"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 11,
-    "fields": {
-        "summary": "Купить энергетик",
-        "description": "Сходить в ближайший магазин и купить энергетик",
-        "status": 2,
-        "created_at": "2022-01-24",
-        "updated_at": "2022-01-24"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 12,
-    "fields": {
-        "summary": "Запилить соло на клавиатуре",
-        "description": "Запилить соло на клавиатуре не глядя на нее",
-        "status": 3,
-        "created_at": "2022-01-24",
-        "updated_at": "2022-01-24"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 13,
-    "fields": {
-        "summary": "Закипятить чайник",
-        "description": "Набрать воды и поставить кипятиться воду",
-        "status": 1,
-        "created_at": "2022-01-24",
-        "updated_at": "2022-01-24"
-    }
-},
-{
-    "model": "tracker_app.task",
-    "pk": 14,
-    "fields": {
-        "summary": "Разобраться в связи многие ко многим",
-        "description": "Разобраться в связи многие ко многим и перестать путаться в запросах",
-        "status": 2,
-        "created_at": "2022-01-24",
-        "updated_at": "2022-01-24"
-    }
-},
-{
-    "model": "tracker_app.type",
-    "pk": 1,
-    "fields": {
-        "name": "Задача"
-    }
-},
-{
-    "model": "tracker_app.type",
-    "pk": 2,
-    "fields": {
-        "name": "Ошибка"
-    }
-},
-{
-    "model": "tracker_app.type",
-    "pk": 3,
-    "fields": {
-        "name": "Улучшение"
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 11,
-    "fields": {
-        "task": 1,
-        "type": 1
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 14,
-    "fields": {
-        "task": 1,
-        "type": 2
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 15,
-    "fields": {
-        "task": 1,
-        "type": 3
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 21,
-    "fields": {
-        "task": 10,
-        "type": 1
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 22,
-    "fields": {
-        "task": 10,
-        "type": 3
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 23,
-    "fields": {
-        "task": 11,
-        "type": 1
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 24,
-    "fields": {
-        "task": 12,
-        "type": 3
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 25,
-    "fields": {
-        "task": 13,
-        "type": 1
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 26,
-    "fields": {
-        "task": 13,
-        "type": 2
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 27,
-    "fields": {
-        "task": 14,
-        "type": 2
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 28,
-    "fields": {
-        "task": 14,
-        "type": 3
-    }
-},
-{
-    "model": "tracker_app.status",
-    "pk": 1,
-    "fields": {
-        "name": "Новая"
-    }
-},
-{
-    "model": "tracker_app.status",
-    "pk": 2,
-    "fields": {
-        "name": "Выполняется"
-    }
-},
-{
-    "model": "tracker_app.status",
-    "pk": 3,
-    "fields": {
-        "name": "Выполненна"
-    }
-}
-]
-[
 {
     "model": "tracker_app.task",
     "pk": 1,
@@ -308,6 +16,7 @@
         "summary": "Закончить домашку",
         "description": "К концу дня закончить домашку",
         "status": 1,
+        "project": 1,
         "created_at": "2022-01-13",
         "updated_at": "2022-01-24"
     }
@@ -319,6 +28,7 @@
         "summary": "Придумать 4 задачи",
         "description": "Придумать 4 задачи и добавить их в базу данных",
         "status": 1,
+        "project": 1,
         "created_at": "2022-01-24",
         "updated_at": "2022-01-24"
     }
@@ -330,6 +40,7 @@
         "summary": "Купить энергетик",
         "description": "Сходить в ближайший магазин и купить энергетик",
         "status": 2,
+        "project": 1,
         "created_at": "2022-01-24",
         "updated_at": "2022-01-24"
     }
@@ -341,6 +52,7 @@
         "summary": "Запилить соло bug на клавиатуре",
         "description": "Запилить соло на клавиатуре не глядя на нее",
         "status": 3,
+        "project": 1,
         "created_at": "2022-01-24",
         "updated_at": "2022-01-24"
     }
@@ -352,6 +64,7 @@
         "summary": "Закипятить чайник",
         "description": "Набрать воды и поставить кипятиться воду",
         "status": 3,
+        "project": 1,
         "created_at": "2022-01-24",
         "updated_at": "2022-01-24"
     }
@@ -363,6 +76,7 @@
         "summary": "Разобраться в связи многие ко многим",
         "description": "Разобраться в связи многие ко многим и перестать путаться в запросах",
         "status": 2,
+        "project": 1,
         "created_at": "2022-01-24",
         "updated_at": "2022-01-24"
     }
@@ -374,8 +88,57 @@
         "summary": "Вот это совпадение!!!",
         "description": "Вот это совпадение!!!",
         "status": 1,
+        "project": 1,
         "created_at": "2022-01-24",
         "updated_at": "2022-01-24"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 16,
+    "fields": {
+        "summary": "task33",
+        "description": "ssdfsdfsdfasf",
+        "status": 1,
+        "project": 1,
+        "created_at": "2022-01-31",
+        "updated_at": "2022-01-31"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 17,
+    "fields": {
+        "summary": "Task 100500",
+        "description": "ghgkjkyrhegesdvd",
+        "status": 2,
+        "project": 1,
+        "created_at": "2022-01-31",
+        "updated_at": "2022-01-31"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 18,
+    "fields": {
+        "summary": "task20",
+        "description": "jkfdskljf sdfkjsfks fjskf jsdj fskf s fks f sdf sdfsd fsd kfjsd f",
+        "status": 2,
+        "project": 1,
+        "created_at": "2022-01-31",
+        "updated_at": "2022-01-31"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 19,
+    "fields": {
+        "summary": "task 10",
+        "description": "sdkfjsdk fskd fsjdf s f sdkf jkds jfoiewuiof eo eiow udoiu ed",
+        "status": 2,
+        "project": 1,
+        "created_at": "2022-01-31",
+        "updated_at": "2022-01-31"
     }
 },
 {
@@ -460,6 +223,54 @@
     "pk": 30,
     "fields": {
         "task": 15,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 31,
+    "fields": {
+        "task": 16,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 32,
+    "fields": {
+        "task": 17,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 33,
+    "fields": {
+        "task": 17,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 34,
+    "fields": {
+        "task": 18,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 35,
+    "fields": {
+        "task": 18,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 36,
+    "fields": {
+        "task": 19,
         "type": 2
     }
 },

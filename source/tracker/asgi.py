@@ -1,5 +1,5 @@
 """
-ASGI config for tracker project.
+ASGI config for tracker projects.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

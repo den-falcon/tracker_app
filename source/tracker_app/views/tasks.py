@@ -3,14 +3,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, RedirectView, FormView, ListView
 from django.urls import reverse
 
-from .forms import TaskForm, SearchForm
-from .models import Task
+from tracker_app.forms import TaskForm, SearchForm
+from tracker_app.models import Task
 
 
 class IndexView(ListView):
     model = Task
     context_object_name = "tasks"
-    template_name = "index.html"
+    template_name = "tasks/index.html"
     paginate_by = 10
     paginate_orphans = 0
 
@@ -44,7 +44,7 @@ class IndexView(ListView):
 
 
 class TaskView(TemplateView):
-    template_name = 'view.html'
+    template_name = 'tasks/view.html'
 
     def get_context_data(self, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
@@ -54,7 +54,7 @@ class TaskView(TemplateView):
 
 class CreateView(FormView):
     form_class = TaskForm
-    template_name = "create.html"
+    template_name = "tasks/create.html"
     object = None
 
     def form_valid(self, form):
@@ -62,12 +62,12 @@ class CreateView(FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('view', kwargs={"pk": self.object.pk})
+        return reverse('task-view', kwargs={"pk": self.object.pk})
 
 
 class UpdateView(FormView):
     form_class = TaskForm
-    template_name = "update.html"
+    template_name = "tasks/update.html"
 
     def dispatch(self, request, *args, **kwargs):
         self.task = self.get_object()
@@ -97,14 +97,14 @@ class UpdateView(FormView):
 def article_delete_view(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if request.method == 'GET':
-        return render(request, "delete.html", {"task": task})
+        return render(request, "tasks/delete.html", {"task": task})
     else:
         task.delete()
         return redirect("index")
 
 
 class DeleteView(TemplateView):
-    template_name = 'delete.html'
+    template_name = 'tasks/delete.html'
 
     def get_context_data(self, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
@@ -114,6 +114,6 @@ class DeleteView(TemplateView):
     def post(self, request, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
         task.delete()
-        return redirect("index")
+        return redirect("tasks-index")
 
 
