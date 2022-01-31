@@ -13,13 +13,16 @@ from .models import Task, Type
 #     status = forms.ModelChoiceField(queryset=Status.objects.all(), label='Статус')
 
 class TaskForm(forms.ModelForm):
-
     class Meta:
         model = Task
         exclude = []
         widgets = {
             'type': forms.CheckboxSelectMultiple
         }
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=30, required=False, label="Найти")
 
     # def clean(self):
     #     cleaned_data = super().clean()
