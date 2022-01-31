@@ -32,6 +32,9 @@ class Task(models.Model):
     type = models.ManyToManyField('tracker_app.Type', related_name='tasks', through='tracker_app.TaskType',
                                   through_fields=('task', 'type'))
 
+    def get_absolute_url(self):
+        return reverse('task-view', kwargs={'pk': self.pk})
+
     def __str__(self):
         return f'{self.summary} ({self.type.all()[0]}) {self.created_at}'
 

@@ -18,19 +18,17 @@
         <header class="bg-danger">
           <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-              <a class="navbar-brand" href="{% url 'tasks-index' %}">Tasks</a>
+              <a class="navbar-brand" href="{% url 'projects-view' %}">TRACKER</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'task-create' %}">Добавить задачу</a>
-                  </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'project-create' %}">Создать проэкт</a>
-                  </li>
+                        <a class="nav-link active" aria-current="page" href="{% url 'project-create' %}">Создать проэкт</a>
+                    </li>
+                    {% block links %}{% endblock %}
                 </ul>
               </div>
                 {% block simple_search %}{% endblock %}

@@ -8,7 +8,7 @@ from tracker_app.models import Project
 class ProjectsView(ListView):
     model = Project
     context_object_name = "projects"
-    template_name = "projects/index.html"
+    template_name = "projects/projects-view.html"
     paginate_by = 10
     paginate_orphans = 0
 
@@ -42,7 +42,7 @@ class ProjectsView(ListView):
 
 
 class ProjectView(DetailView):
-    template_name = 'projects/view.html'
+    template_name = 'projects/project-view.html'
     model = Project
 
     def get_context_data(self, **kwargs):

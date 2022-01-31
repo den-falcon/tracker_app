@@ -1,16 +1,16 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, CreateView
 from django.urls import reverse
 
 from tracker_app.forms import TaskForm, SearchForm
-from tracker_app.models import Task
+from tracker_app.models import Task, Project
 
 
 class IndexView(ListView):
     model = Task
     context_object_name = "tasks"
-    template_name = "tasks/index.html"
+    template_name = "tasks/tasks-view.html"
     paginate_by = 10
     paginate_orphans = 0
 
@@ -47,22 +47,23 @@ class TaskView(TemplateView):
     template_name = 'tasks/view.html'
 
     def get_context_data(self, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        task = get_object_or_404(Task, pk=kwargs.get('task_pk'))
         kwargs['task'] = task
         return super().get_context_data(**kwargs)
 
 
-class CreateView(FormView):
+class TaskCreate(CreateView):
+    model = Task
     form_class = TaskForm
-    template_name = "tasks/create.html"
-    object = None
+    template_name = 'tasks/create.html'
 
     def form_valid(self, form):
-        self.object = form.save()
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('task-view', kwargs={"pk": self.object.pk})
+        project = get_object_or_404(Project, pk=self.kwargs.get('project_pk'))
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        form.save_m2m()
+        return redirect('task-view', project_pk=project.pk, task_pk=task.pk)
 
 
 class UpdateView(FormView):

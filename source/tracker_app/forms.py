@@ -13,7 +13,7 @@ from .models import Task, Project
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = []
+        exclude = ['project']
         widgets = {
             'type': forms.CheckboxSelectMultiple
         }

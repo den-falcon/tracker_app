@@ -10,7 +10,10 @@
             {% include 'partial/pagination.html' %}
         {% endif %}
         <div class="mt-5">
-        <h3 class="mt-4 mb-0 fw-bold fs-2">Задачи</h3>
+        {% block description %}{% endblock %}
+        {% block content-title %}
+        <h3 class="mt-4 mb-0 fw-bold fs-2">Проэкты</h3>
+        {% endblock %}
         <hr class="text-danger mt-1">
           <div class="row justify-content-start">
           {% block card %}
