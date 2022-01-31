@@ -3,9 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, RedirectView, FormView, ListView
 from django.urls import reverse
 
-from tracker_app.forms import TaskForm, SearchForm
-from tracker_app.models import Task
-
+from .forms import TaskForm, SearchForm
+from .models import Task
 
 class IndexView(ListView):
     model = Task
