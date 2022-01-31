@@ -10,6 +10,46 @@
     }
 },
 {
+    "model": "tracker_app.project",
+    "pk": 2,
+    "fields": {
+        "start_date": "2022-02-01",
+        "end_date": null,
+        "name": "Проэкт тестовый",
+        "description": "Это тестовый проэкт созданный эксперементальным путем"
+    }
+},
+{
+    "model": "tracker_app.project",
+    "pk": 3,
+    "fields": {
+        "start_date": "2022-02-02",
+        "end_date": null,
+        "name": "Тестовый проэкт 2",
+        "description": "Второй тестовый проэкт"
+    }
+},
+{
+    "model": "tracker_app.project",
+    "pk": 4,
+    "fields": {
+        "start_date": "2022-02-03",
+        "end_date": null,
+        "name": "Третий тестовый",
+        "description": "Не хочет делать редирект, поэтому появился этот проэкт"
+    }
+},
+{
+    "model": "tracker_app.project",
+    "pk": 5,
+    "fields": {
+        "start_date": "2022-02-04",
+        "end_date": "2022-03-04",
+        "name": "Еще один тестовый",
+        "description": "Вроде все работает)"
+    }
+},
+{
     "model": "tracker_app.task",
     "pk": 1,
     "fields": {
@@ -95,18 +135,6 @@
 },
 {
     "model": "tracker_app.task",
-    "pk": 16,
-    "fields": {
-        "summary": "task33",
-        "description": "ssdfsdfsdfasf",
-        "status": 1,
-        "project": 1,
-        "created_at": "2022-01-31",
-        "updated_at": "2022-01-31"
-    }
-},
-{
-    "model": "tracker_app.task",
     "pk": 17,
     "fields": {
         "summary": "Task 100500",
@@ -138,6 +166,150 @@
         "status": 2,
         "project": 1,
         "created_at": "2022-01-31",
+        "updated_at": "2022-01-31"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 20,
+    "fields": {
+        "summary": "Первая тестовая",
+        "description": "Это первая тестовая задача",
+        "status": 1,
+        "project": 4,
+        "created_at": "2022-02-03",
+        "updated_at": "2022-02-03"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 23,
+    "fields": {
+        "summary": "Первая для массовки",
+        "description": "Эта задача не несет в себе никакой пользы и нужна она в роли актера массовки",
+        "status": 1,
+        "project": 5,
+        "created_at": "2022-02-03",
+        "updated_at": "2022-01-31"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 24,
+    "fields": {
+        "summary": "Тест после исправления",
+        "description": "Обнаружилось что созданные задачи не сохраняют тип, добавил form.safe_m2m() надеюсь исправит положение",
+        "status": 1,
+        "project": 5,
+        "created_at": "2022-02-03",
+        "updated_at": "2022-02-03"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 25,
+    "fields": {
+        "summary": "Актер массовки 1",
+        "description": "Задача для массовки",
+        "status": 1,
+        "project": 5,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 26,
+    "fields": {
+        "summary": "Актер массовки 2",
+        "description": "Задача создана для массовки",
+        "status": 1,
+        "project": 5,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 27,
+    "fields": {
+        "summary": "Актер массовки 3",
+        "description": "Задача создана для массовки",
+        "status": 1,
+        "project": 5,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 28,
+    "fields": {
+        "summary": "Актер массовки 4",
+        "description": "Задача создана для массовки",
+        "status": 2,
+        "project": 5,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 29,
+    "fields": {
+        "summary": "Актер массовки 5",
+        "description": "Задача создана для массовки",
+        "status": 1,
+        "project": 4,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 30,
+    "fields": {
+        "summary": "Актер массовки 6",
+        "description": "Задача создана для массовки",
+        "status": 1,
+        "project": 4,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 31,
+    "fields": {
+        "summary": "Актер массовки 7",
+        "description": "Задача создана для массовки",
+        "status": 3,
+        "project": 4,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 32,
+    "fields": {
+        "summary": "Актер массовки 1",
+        "description": "Задача создана для массовки",
+        "status": 1,
+        "project": 4,
+        "created_at": "2022-02-04",
+        "updated_at": "2022-02-04"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 33,
+    "fields": {
+        "summary": "Актер массовки 8",
+        "description": "Задача создана для массовки",
+        "status": 1,
+        "project": 4,
+        "created_at": "2022-02-04",
         "updated_at": "2022-01-31"
     }
 },
@@ -228,14 +400,6 @@
 },
 {
     "model": "tracker_app.tasktype",
-    "pk": 31,
-    "fields": {
-        "task": 16,
-        "type": 1
-    }
-},
-{
-    "model": "tracker_app.tasktype",
     "pk": 32,
     "fields": {
         "task": 17,
@@ -272,6 +436,110 @@
     "fields": {
         "task": 19,
         "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 37,
+    "fields": {
+        "task": 24,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 38,
+    "fields": {
+        "task": 23,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 39,
+    "fields": {
+        "task": 23,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 42,
+    "fields": {
+        "task": 25,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 43,
+    "fields": {
+        "task": 26,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 44,
+    "fields": {
+        "task": 27,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 45,
+    "fields": {
+        "task": 28,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 46,
+    "fields": {
+        "task": 29,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 47,
+    "fields": {
+        "task": 30,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 48,
+    "fields": {
+        "task": 31,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 49,
+    "fields": {
+        "task": 32,
+        "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 50,
+    "fields": {
+        "task": 33,
+        "type": 2
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 51,
+    "fields": {
+        "task": 33,
+        "type": 1
     }
 },
 {
