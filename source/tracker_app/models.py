@@ -1,11 +1,28 @@
 from django.db import models
 
 
+class Project(models.Model):
+    start_date = models.DateField(verbose_name='Дата создания')
+    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
+    name = models.CharField(max_length=150, verbose_name='Название')
+    description = models.TextField(max_length=2000, verbose_name='Описание')
+
+    def __str__(self):
+        return f'{self.name} {self.start_date}'
+
+    class Meta:
+        db_table = 'projects'
+        verbose_name = 'Проэкт'
+        verbose_name_plural = 'Проэкты'
+
+
 class Task(models.Model):
     summary = models.CharField(max_length=150, verbose_name='Заголовок')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание')
     status = models.ForeignKey('tracker_app.Status', related_name='Statuses', on_delete=models.PROTECT,
                                verbose_name='Статус')
+    project = models.ForeignKey('tracker_app.Project', related_name='Tasks', on_delete=models.CASCADE,
+                                verbose_name='Проэкт')
     created_at = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateField(auto_now=True, verbose_name='Дата обновления')
     type = models.ManyToManyField('tracker_app.Type', related_name='tasks', through='tracker_app.TaskType',
@@ -33,8 +50,10 @@ class Type(models.Model):
 
 
 class TaskType(models.Model):
-    task = models.ForeignKey('tracker_app.Task', related_name='task_types', on_delete=models.CASCADE, verbose_name='Задача')
-    type = models.ForeignKey('tracker_app.Type', related_name='type_tasks', on_delete=models.CASCADE, verbose_name='Тип')
+    task = models.ForeignKey('tracker_app.Task', related_name='task_types', on_delete=models.CASCADE,
+                             verbose_name='Задача')
+    type = models.ForeignKey('tracker_app.Type', related_name='type_tasks', on_delete=models.CASCADE,
+                             verbose_name='Тип')
 
     def __str__(self):
         return f'{self.task} | {self.type}'
