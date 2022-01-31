@@ -4,11 +4,13 @@
         {% include 'partial/simple_search.html' %}
     </div>
 {% endblock %}
+{% block links %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'tasks-view' %}">Все задачи</a>
+    </li>
+{% endblock %}
 {% block content %}
     <div class="container">
-        {% if is_paginated %}
-            {% include 'partial/pagination.html' %}
-        {% endif %}
         <div class="mt-5">
         {% block description %}{% endblock %}
         {% block content-title %}

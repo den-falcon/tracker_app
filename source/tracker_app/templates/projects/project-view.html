@@ -1,5 +1,8 @@
 {% extends 'projects/projects-view.html' %}
 {% block simple_search %}
+    <div class="d-flex justify-content-end">
+        {% include 'partial/simple_search.html' %}
+    </div>
 {% endblock %}
 {% block links %}
     <li class="nav-item">
@@ -22,13 +25,13 @@
     <h3 class="mt-4 mb-0 fw-bold fs-2">Задачи проэкта</h3>
 {% endblock %}
 {% block card %}
-    {% for task in tasks %}
+    {% for task in object_list %}
         <div class="col-md-4 col-sm-6 mb-4">
             <div class="card h-100 ">
                 <div class="d-flex card-header bg-danger text-light">
                     <span class="flex-grow-1"><a class="text-reset" href="{% url 'task-view' task_pk=task.pk project_pk=task.project_id %}">{{ task.summary }} ({{ task.status }})</a></span>
-                    <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                    <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                    <a class="text-reset" href="{% url 'task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                    <a class="text-reset" href="{% url 'task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ task.description }}</p>

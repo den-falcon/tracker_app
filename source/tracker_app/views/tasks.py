@@ -89,19 +89,10 @@ class UpdateView(FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('view', kwargs={"pk": self.task.pk})
+        return reverse('task-view', kwargs={"task_pk": self.task.pk, 'project_pk': self.task.project.pk})
 
     def get_object(self):
         return get_object_or_404(Task, pk=self.kwargs.get("pk"))
-
-
-def article_delete_view(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    if request.method == 'GET':
-        return render(request, "tasks/delete.html", {"task": task})
-    else:
-        task.delete()
-        return redirect("index")
 
 
 class DeleteView(TemplateView):
@@ -114,5 +105,6 @@ class DeleteView(TemplateView):
 
     def post(self, request, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        pk = task.project.pk
         task.delete()
-        return redirect("tasks-index")
+        return redirect("project-view", pk=pk)

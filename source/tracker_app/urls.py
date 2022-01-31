@@ -5,7 +5,7 @@ from tracker_app.views.tasks import IndexView, TaskView, UpdateView, DeleteView,
 
 urlpatterns = [
     path('', ProjectsView.as_view(), name='projects-view'),
-    path('tasks/', IndexView.as_view(), name='tasks-index'),
+    path('tasks/', IndexView.as_view(), name='tasks-view'),
     path('project/<int:pk>', ProjectView.as_view(), name='project-view'),
     path('project/<int:project_pk>/task/<int:task_pk>/', TaskView.as_view(), name='task-view'),
     path('project/<int:project_pk>/task/create/', TaskCreate.as_view(), name='task-create'),
