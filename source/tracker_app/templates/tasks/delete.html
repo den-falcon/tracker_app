@@ -4,9 +4,9 @@
     <div class="container">
         <form action="{% url "task-delete" task.pk %}" method="POST">
         {% csrf_token %}
-            <h2>Вы действительно хотите удалить товар? {{ task.summary }}</h2>
+            <h2>Вы действительно хотите удалить задачу? {{ task.summary }}</h2>
             <button type="submit" class="btn btn-outline-danger">Да</button>
-            <a class="btn btn-danger" href="{% url "projects-index" %}">Нет</a>
+            <a class="btn btn-danger" href="{% url "projects-view" %}">Нет</a>
         </form>
     </div>
 {% endblock %}

@@ -1,8 +1,6 @@
 from django import forms
-from django.core.exceptions import ValidationError
-from django.forms import widgets
 
-from .models import Task, Type
+from .models import Task, Project
 
 
 # class TaskForm(forms.Form):
@@ -19,6 +17,12 @@ class TaskForm(forms.ModelForm):
         widgets = {
             'type': forms.CheckboxSelectMultiple
         }
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = []
 
 
 class SearchForm(forms.Form):

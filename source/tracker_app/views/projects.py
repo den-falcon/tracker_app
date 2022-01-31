@@ -1,7 +1,7 @@
 from django.db.models import Q
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
-from tracker_app.forms import SearchForm
+from tracker_app.forms import SearchForm, ProjectForm
 from tracker_app.models import Project
 
 
@@ -50,3 +50,9 @@ class ProjectView(DetailView):
         tasks = self.object.Tasks.order_by("-created_at")
         context['tasks'] = tasks
         return context
+
+
+class ProjectCreate(CreateView):
+    model = Project
+    form_class = ProjectForm
+    template_name = "projects/create.html"

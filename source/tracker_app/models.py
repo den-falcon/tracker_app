@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Project(models.Model):
@@ -6,6 +7,9 @@ class Project(models.Model):
     end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
     name = models.CharField(max_length=150, verbose_name='Название')
     description = models.TextField(max_length=2000, verbose_name='Описание')
+
+    def get_absolute_url(self):
+        return reverse('project-view', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f'{self.name} {self.start_date}'
