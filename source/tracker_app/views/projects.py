@@ -1,11 +1,11 @@
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from tracker_app.forms import SearchForm
 from tracker_app.models import Project
 
 
-class ProjectsIndexView(ListView):
+class ProjectsView(ListView):
     model = Project
     context_object_name = "projects"
     template_name = "projects/index.html"
@@ -39,3 +39,14 @@ class ProjectsIndexView(ListView):
     def get_search_value(self):
         if self.form.is_valid():
             return self.form.cleaned_data.get("search")
+
+
+class ProjectView(DetailView):
+    template_name = 'projects/view.html'
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tasks = self.object.Tasks.order_by("-created_at")
+        context['tasks'] = tasks
+        return context

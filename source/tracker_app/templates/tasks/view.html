@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
-        <h1>{{  task.summary }} ({{ task.status }})</h1>
+
+        <h1>{{  task.summary }} ({{ task.project.name }})</h1>
         <h3>Описание:</h3>
         <p>{{ task.description }}</p>
+        <p>Статус: {{ task.status }}</p>
         <p>Тип:
             {% for type in task.type.all %}
                     {{ type }}{% if not forloop.last %}, {% else %}. {% endif %}

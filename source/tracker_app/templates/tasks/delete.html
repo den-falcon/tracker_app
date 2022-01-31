@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="container">
-        <form action="{% url "delete" task.pk %}" method="POST">
+        <form action="{% url "task-delete" task.pk %}" method="POST">
         {% csrf_token %}
             <h2>Вы действительно хотите удалить товар? {{ task.summary }}</h2>
             <button type="submit" class="btn btn-outline-danger">Да</button>
-            <a class="btn btn-danger" href="{% url "index" %}">Нет</a>
+            <a class="btn btn-danger" href="{% url "projects-index" %}">Нет</a>
         </form>
     </div>
 {% endblock %}

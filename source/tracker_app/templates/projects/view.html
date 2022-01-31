@@ -1,0 +1,17 @@
+{% extends 'projects/index.html' %}
+{% block card %}
+    {% for task in tasks %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card h-100 ">
+                <div class="d-flex card-header bg-danger text-light">
+                    <span class="flex-grow-1"><a class="text-reset" href="{% url 'task-view' pk=task.pk project_pk=task.project_id %}">{{ task.summary }} ({{ task.status }})</a></span>
+                    <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                    <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ task.description }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
