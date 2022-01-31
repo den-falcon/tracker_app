@@ -115,5 +115,3 @@ class DeleteView(TemplateView):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
         task.delete()
         return redirect("tasks-index")
-
-
