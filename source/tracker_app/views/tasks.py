@@ -1,9 +1,8 @@
-from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse
 
-from tracker_app.forms import TaskForm, SearchForm
+from tracker_app.forms import TaskForm
 from tracker_app.models import Task, Project
 from tracker_app.views.base import SearchView
 
@@ -33,7 +32,7 @@ class TaskCreate(CreateView):
         task.project = project
         task.save()
         form.save_m2m()
-        return redirect('task-view', project_pk=project.pk, task_pk=task.pk)
+        return redirect('task-view', pk=task.pk)
 
 
 class TaskUpdate(UpdateView):

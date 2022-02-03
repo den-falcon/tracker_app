@@ -24,8 +24,8 @@
                   <div class="card h-100 ">
                     <div class="d-flex card-header bg-danger text-light">
                         <span class="flex-grow-1"><a class="text-reset" href="{% url 'project-view' project.pk %}">{{ project.name }} ({{ project.start_date }})</a></span>
-                        <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                        <a class="text-reset" href="#"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                        <a class="text-reset" href="{% url 'project-update' project.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                        <a class="text-reset" href="{% url 'project-delete' project.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                     </div>
                     <div class="card-body">
                       <p class="card-text">{{ project.description }}</p>

@@ -1,4 +1,5 @@
-from django.views.generic import CreateView
+from django.urls import reverse
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import SingleObjectMixin
 
 from tracker_app.forms import ProjectForm
@@ -36,3 +37,22 @@ class ProjectCreate(CreateView):
     model = Project
     form_class = ProjectForm
     template_name = "projects/create.html"
+
+
+class ProjectUpdate(UpdateView):
+    model = Project
+    template_name = 'tasks/update.html'
+    form_class = ProjectForm
+
+    def get_success_url(self):
+        return reverse("project-view", kwargs={"pk": self.object.pk})
+
+
+class ProjectDelete(DeleteView):
+    model = Project
+
+    def get(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse("projects-view")

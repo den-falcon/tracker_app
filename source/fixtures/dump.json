@@ -11,26 +11,6 @@
 },
 {
     "model": "tracker_app.project",
-    "pk": 2,
-    "fields": {
-        "start_date": "2022-02-01",
-        "end_date": null,
-        "name": "Проэкт тестовый",
-        "description": "Это тестовый проэкт созданный эксперементальным путем"
-    }
-},
-{
-    "model": "tracker_app.project",
-    "pk": 3,
-    "fields": {
-        "start_date": "2022-02-02",
-        "end_date": null,
-        "name": "Тестовый проэкт 2",
-        "description": "Второй тестовый проэкт"
-    }
-},
-{
-    "model": "tracker_app.project",
     "pk": 4,
     "fields": {
         "start_date": "2022-02-03",
@@ -47,6 +27,16 @@
         "end_date": "2022-03-04",
         "name": "Еще один тестовый",
         "description": "Вроде все работает)"
+    }
+},
+{
+    "model": "tracker_app.project",
+    "pk": 6,
+    "fields": {
+        "start_date": "2022-02-05",
+        "end_date": "2022-02-06",
+        "name": "Последний тестовый",
+        "description": "Наверное это последний тестовый"
     }
 },
 {
@@ -183,18 +173,6 @@
 },
 {
     "model": "tracker_app.task",
-    "pk": 23,
-    "fields": {
-        "summary": "Первая для массовки",
-        "description": "Эта задача не несет в себе никакой пользы и нужна она в роли актера массовки",
-        "status": 1,
-        "project": 5,
-        "created_at": "2022-02-03",
-        "updated_at": "2022-01-31"
-    }
-},
-{
-    "model": "tracker_app.task",
     "pk": 24,
     "fields": {
         "summary": "Тест после исправления",
@@ -311,6 +289,30 @@
         "project": 4,
         "created_at": "2022-02-04",
         "updated_at": "2022-01-31"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 34,
+    "fields": {
+        "summary": "Актер массовки 9",
+        "description": "Эта задача созданна для массовки",
+        "status": 1,
+        "project": 6,
+        "created_at": "2022-02-03",
+        "updated_at": "2022-02-03"
+    }
+},
+{
+    "model": "tracker_app.task",
+    "pk": 35,
+    "fields": {
+        "summary": "Актер массовки 10",
+        "description": "Эта задача созданна для массовки",
+        "status": 1,
+        "project": 6,
+        "created_at": "2022-02-03",
+        "updated_at": "2022-02-03"
     }
 },
 {
@@ -448,22 +450,6 @@
 },
 {
     "model": "tracker_app.tasktype",
-    "pk": 38,
-    "fields": {
-        "task": 23,
-        "type": 2
-    }
-},
-{
-    "model": "tracker_app.tasktype",
-    "pk": 39,
-    "fields": {
-        "task": 23,
-        "type": 1
-    }
-},
-{
-    "model": "tracker_app.tasktype",
     "pk": 42,
     "fields": {
         "task": 25,
@@ -540,6 +526,22 @@
     "fields": {
         "task": 33,
         "type": 1
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 52,
+    "fields": {
+        "task": 34,
+        "type": 3
+    }
+},
+{
+    "model": "tracker_app.tasktype",
+    "pk": 53,
+    "fields": {
+        "task": 35,
+        "type": 3
     }
 },
 {

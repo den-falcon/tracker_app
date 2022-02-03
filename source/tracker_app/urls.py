@@ -1,6 +1,6 @@
 from django.urls import path
 
-from tracker_app.views.projects import ProjectsView, ProjectView, ProjectCreate
+from tracker_app.views.projects import ProjectsView, ProjectView, ProjectCreate, ProjectUpdate, ProjectDelete
 from tracker_app.views.tasks import TasksView, TaskView, TaskUpdate, TaskDeleteView, TaskCreate
 
 urlpatterns = [
@@ -10,6 +10,8 @@ urlpatterns = [
     path('task/<int:pk>/', TaskView.as_view(), name='task-view'),
     path('project/<int:project_pk>/task/create/', TaskCreate.as_view(), name='task-create'),
     path('project/create/', ProjectCreate.as_view(), name='project-create'),
-    path('task/update/<int:pk>/', TaskUpdate.as_view(), name='task-update'),
-    path('task/delete/<int:pk>/', TaskDeleteView.as_view(), name='task-delete')
+    path('project/<int:pk>/update/', ProjectUpdate.as_view(), name='project-update'),
+    path('project/<int:pk>/delete/', ProjectDelete.as_view(), name='project-delete'),
+    path('task/<int:pk>/update/', TaskUpdate.as_view(), name='task-update'),
+    path('task/<int:pk>/delete/', TaskDeleteView.as_view(), name='task-delete')
 ]
