@@ -6,17 +6,17 @@
 {% endblock %}
 {% block links %}
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'task-create' project.pk %}">Добавить задачу</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'task-create' object.pk %}">Добавить задачу</a>
     </li>
 {% endblock %}
 {% block description %}
     <div class="container">
-        <h1>{{  project.name }}</h1>
+        <h1>{{  object.name }}</h1>
         <h3>Описание:</h3>
-        <p>{{ project.description }}</p>
-        <p>Дата создания: {{ project.start_date }}</p>
-        {% if project.end_date %}
-            <p>Дедлайн: {{ project.end_date }}</p>
+        <p>{{ object.description }}</p>
+        <p>Дата создания: {{ object.start_date }}</p>
+        {% if object.end_date %}
+            <p>Дедлайн: {{ object.end_date }}</p>
         {% endif %}
         <br>
     </div>
@@ -29,7 +29,7 @@
         <div class="col-md-4 col-sm-6 mb-4">
             <div class="card h-100 ">
                 <div class="d-flex card-header bg-danger text-light">
-                    <span class="flex-grow-1"><a class="text-reset" href="{% url 'task-view' task_pk=task.pk project_pk=task.project_id %}">{{ task.summary }} ({{ task.status }})</a></span>
+                    <span class="flex-grow-1"><a class="text-reset" href="{% url 'task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
                     <a class="text-reset" href="{% url 'task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
                     <a class="text-reset" href="{% url 'task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                 </div>
