@@ -6,7 +6,7 @@
 {% endblock %}
 {% block links %}
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'tasks-view' %}">Все задачи</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'tracker_app:tasks-view' %}">Все задачи</a>
     </li>
 {% endblock %}
 {% block content %}
@@ -23,9 +23,9 @@
                 <div class="col-md-4 col-sm-6 mb-4">
                   <div class="card h-100 ">
                     <div class="d-flex card-header bg-danger text-light">
-                        <span class="flex-grow-1"><a class="text-reset" href="{% url 'project-view' project.pk %}">{{ project.name }} ({{ project.start_date }})</a></span>
-                        <a class="text-reset" href="{% url 'project-update' project.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                        <a class="text-reset" href="{% url 'project-delete' project.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                        <span class="flex-grow-1"><a class="text-reset" href="{% url 'tracker_app:project-view' project.pk %}">{{ project.name }} ({{ project.start_date }})</a></span>
+                        <a class="text-reset" href="{% url 'tracker_app:project-update' project.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                        <a class="text-reset" href="{% url 'tracker_app:project-delete' project.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                     </div>
                     <div class="card-body">
                       <p class="card-text">{{ project.description }}</p>

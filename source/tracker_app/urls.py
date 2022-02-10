@@ -3,6 +3,8 @@ from django.urls import path
 from tracker_app.views.projects import ProjectsView, ProjectView, ProjectCreate, ProjectUpdate, ProjectDelete
 from tracker_app.views.tasks import TasksView, TaskView, TaskUpdate, TaskDeleteView, TaskCreate
 
+app_name = 'tracker_app'
+
 urlpatterns = [
     path('', ProjectsView.as_view(), name='projects-view'),
     path('tasks/', TasksView.as_view(), name='tasks-view'),

@@ -6,7 +6,7 @@
 {% endblock %}
 {% block links %}
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'task-create' object.pk %}">Добавить задачу</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'tracker_app:task-create' object.pk %}">Добавить задачу</a>
     </li>
 {% endblock %}
 {% block description %}
@@ -29,9 +29,9 @@
         <div class="col-md-4 col-sm-6 mb-4">
             <div class="card h-100 ">
                 <div class="d-flex card-header bg-danger text-light">
-                    <span class="flex-grow-1"><a class="text-reset" href="{% url 'task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
-                    <a class="text-reset" href="{% url 'task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                    <a class="text-reset" href="{% url 'task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                    <span class="flex-grow-1"><a class="text-reset" href="{% url 'tracker_app:task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
+                    <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                    <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ task.description }}</p>

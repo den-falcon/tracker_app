@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tracker_app'
+    'tracker_app',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+LOGOUT_REDIRECT_URL = "tracker_app:projects-view"
+LOGIN_REDIRECT_URL = "tracker_app:projects-view"
+
+LOGIN_URL = 'accounts:login'
 
 
 # Static files (CSS, JavaScript, Images)

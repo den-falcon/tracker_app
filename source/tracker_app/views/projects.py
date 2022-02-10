@@ -1,15 +1,16 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import SingleObjectMixin, DetailView
+from django.views.generic.detail import DetailView
 from django.views.generic.list import MultipleObjectMixin
 
 from tracker_app.forms import ProjectForm, SearchForm
-from tracker_app.models import Project, Task
+from tracker_app.models import Project
 from tracker_app.views.base import SearchView
 
 
-class ProjectsView(SearchView):
+class ProjectsView(LoginRequiredMixin, SearchView):
     model = Project
     context_object_name = "projects"
     template_name = "projects/projects-view.html"
@@ -59,7 +60,7 @@ class ProjectUpdate(UpdateView):
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse("project-view", kwargs={"pk": self.object.pk})
+        return reverse("tracker_app:project-view", kwargs={"pk": self.object.pk})
 
 
 class ProjectDelete(DeleteView):
@@ -69,4 +70,4 @@ class ProjectDelete(DeleteView):
         return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse("projects-view")
+        return reverse("tracker_app:projects-view")
