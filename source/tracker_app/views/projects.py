@@ -10,7 +10,7 @@ from tracker_app.models import Project
 from tracker_app.views.base import SearchView
 
 
-class ProjectsView(LoginRequiredMixin, SearchView):
+class ProjectsView(SearchView):
     model = Project
     context_object_name = "projects"
     template_name = "projects/projects-view.html"
@@ -48,13 +48,13 @@ class ProjectView(DetailView, MultipleObjectMixin):
             return self.form.cleaned_data.get("search")
 
 
-class ProjectCreate(CreateView):
+class ProjectCreate(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = "projects/create.html"
 
 
-class ProjectUpdate(UpdateView):
+class ProjectUpdate(LoginRequiredMixin, UpdateView):
     model = Project
     template_name = 'tasks/update.html'
     form_class = ProjectForm
@@ -63,7 +63,7 @@ class ProjectUpdate(UpdateView):
         return reverse("tracker_app:project-view", kwargs={"pk": self.object.pk})
 
 
-class ProjectDelete(DeleteView):
+class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
 
     def get(self, request, *args, **kwargs):

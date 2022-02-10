@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse
@@ -21,7 +22,7 @@ class TaskView(DetailView):
     model = Task
 
 
-class TaskCreate(CreateView):
+class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/create.html'
@@ -35,7 +36,7 @@ class TaskCreate(CreateView):
         return redirect('tracker_app:task-view', pk=task.pk)
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = 'tasks/update.html'
     form_class = TaskForm
@@ -44,7 +45,7 @@ class TaskUpdate(UpdateView):
         return reverse("tracker_app:project-view", kwargs={"pk": self.object.project.pk})
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
 
     def get(self, request, *args, **kwargs):
