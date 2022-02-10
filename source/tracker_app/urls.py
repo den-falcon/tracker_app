@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import RedirectView
 
 from tracker_app.views.projects import ProjectsView, ProjectView, ProjectCreate, ProjectUpdate, ProjectDelete
 from tracker_app.views.tasks import TasksView, TaskView, TaskUpdate, TaskDeleteView, TaskCreate
@@ -7,6 +8,7 @@ app_name = 'tracker_app'
 
 urlpatterns = [
     path('', ProjectsView.as_view(), name='projects-view'),
+    path('projects/', RedirectView.as_view(pattern_name="projects-view")),
     path('tasks/', TasksView.as_view(), name='tasks-view'),
     path('project/<int:pk>', ProjectView.as_view(), name='project-view'),
     path('task/<int:pk>/', TaskView.as_view(), name='task-view'),
