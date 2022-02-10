@@ -26,19 +26,19 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     {% block links %}
-                    {% if not user.is_authenticated %}
+                    {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'tracker_app:project-create' %}">Создать проэкт</a>
+                            <a class="nav-link" aria-current="page" href="{% url 'tracker_app:project-create' %}">Создать проэкт</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'tracker_app:projects-view' %}">К списку проэктов</a>
+                            <a class="nav-link" aria-current="page" href="{% url 'tracker_app:projects-view' %}">К списку проэктов</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
                         </li>
                     {% endif %}
                     {% endblock %}

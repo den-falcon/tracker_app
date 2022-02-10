@@ -15,8 +15,10 @@
                   <div class="card h-100 ">
                     <div class="d-flex card-header bg-danger text-light">
                         <span class="flex-grow-1"><a class="text-reset" href="{% url 'tracker_app:task-view' task.pk %}">{{ task.summary }} ({{ task.project.name }})</a></span>
-                        <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                        <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                        {% if user.is_authenticated %}
+                            <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                            <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                        {% endif %}
                     </div>
                     <div class="card-body">
                       <p class="card-text">{{ task.description }}</p>

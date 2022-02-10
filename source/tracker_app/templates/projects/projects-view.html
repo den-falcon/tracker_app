@@ -5,9 +5,21 @@
     </div>
 {% endblock %}
 {% block links %}
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'tracker_app:tasks-view' %}">Все задачи</a>
-    </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker_app:project-create' %}">Создать проэкт</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'tracker_app:tasks-view' %}">Все задачи</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+        </li>
+    {% endif %}
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -24,8 +36,10 @@
                   <div class="card h-100 ">
                     <div class="d-flex card-header bg-danger text-light">
                         <span class="flex-grow-1"><a class="text-reset" href="{% url 'tracker_app:project-view' project.pk %}">{{ project.name }} ({{ project.start_date }})</a></span>
-                        <a class="text-reset" href="{% url 'tracker_app:project-update' project.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                        <a class="text-reset" href="{% url 'tracker_app:project-delete' project.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                        {% if user.is_authenticated %}
+                            <a class="text-reset" href="{% url 'tracker_app:project-update' project.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
+                            <a class="text-reset" href="{% url 'tracker_app:project-delete' project.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                        {% endif %}
                     </div>
                     <div class="card-body">
                       <p class="card-text">{{ project.description }}</p>
