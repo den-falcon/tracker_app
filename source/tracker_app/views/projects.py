@@ -1,11 +1,11 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import MultipleObjectMixin
 
-from tracker_app.forms import ProjectForm, SearchForm
+from tracker_app.forms import ProjectForm, SearchForm, AddUsers
 from tracker_app.models import Project
 from tracker_app.views.base import SearchView
 
@@ -63,6 +63,19 @@ class ProjectUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'tasks/update.html'
     form_class = ProjectForm
     permission_required = 'tracker_app.change_project'
+
+    def has_permission(self):
+        return super().has_permission() and self.request.user in self.get_object().users.all()
+
+    def get_success_url(self):
+        return reverse("tracker_app:project-view", kwargs={"pk": self.object.pk})
+
+
+class ProjectAddUsers(PermissionRequiredMixin, UpdateView):
+    model = Project
+    form_class = AddUsers
+    template_name = 'projects/add_users.html'
+    permission_required = 'tracker_app.add_users'
 
     def has_permission(self):
         return super().has_permission() and self.request.user in self.get_object().users.all()

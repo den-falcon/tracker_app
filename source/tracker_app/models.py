@@ -22,6 +22,9 @@ class Project(models.Model):
         db_table = 'projects'
         verbose_name = 'Проэкт'
         verbose_name_plural = 'Проэкты'
+        permissions = [
+            ('add_users', 'Может добавлять пользователей в проэкт')
+        ]
 
 
 class Task(models.Model):

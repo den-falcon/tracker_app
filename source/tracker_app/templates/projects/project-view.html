@@ -31,6 +31,9 @@
 {% endblock %}
 {% block description %}
     <div class="container">
+    {% if perms.tracker_app.add_users and request.user in object.users.all %}
+        <a class="btn btn-danger" href="{% url 'tracker_app:add-users' object.pk %}">Добавить пользователей</a>
+    {% endif %}
         <h1>{{ object.name }}</h1>
         <h3>Описание:</h3>
         <p>{{ object.description }}</p>
