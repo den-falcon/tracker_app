@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -48,13 +48,13 @@ class ProjectView(DetailView, MultipleObjectMixin):
             return self.form.cleaned_data.get("search")
 
 
-class ProjectCreate(LoginRequiredMixin, CreateView):
+class ProjectCreate(PermissionRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = "projects/create.html"
 
 
-class ProjectUpdate(LoginRequiredMixin, UpdateView):
+class ProjectUpdate(PermissionRequiredMixin, UpdateView):
     model = Project
     template_name = 'tasks/update.html'
     form_class = ProjectForm
@@ -63,7 +63,7 @@ class ProjectUpdate(LoginRequiredMixin, UpdateView):
         return reverse("tracker_app:project-view", kwargs={"pk": self.object.pk})
 
 
-class ProjectDelete(LoginRequiredMixin, DeleteView):
+class ProjectDelete(PermissionRequiredMixin, DeleteView):
     model = Project
 
     def get(self, request, *args, **kwargs):

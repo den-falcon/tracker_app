@@ -33,14 +33,13 @@ class Task(models.Model):
                                 verbose_name='Проэкт')
     created_at = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateField(auto_now=True, verbose_name='Дата обновления')
-    type = models.ManyToManyField('tracker_app.Type', related_name='tasks', through='tracker_app.TaskType',
-                                  through_fields=('task', 'type'))
+    type = models.ManyToManyField('tracker_app.Type', related_name='tasks')
 
     def get_absolute_url(self):
         return reverse('task-view', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return f'{self.summary} ({self.type.all()[0]}) {self.created_at}'
+        return f'{self.summary} {self.created_at}'
 
     class Meta:
         db_table = 'tasks'
@@ -60,19 +59,19 @@ class Type(models.Model):
         verbose_name_plural = 'Типы'
 
 
-class TaskType(models.Model):
-    task = models.ForeignKey('tracker_app.Task', related_name='task_types', on_delete=models.CASCADE,
-                             verbose_name='Задача')
-    type = models.ForeignKey('tracker_app.Type', related_name='type_tasks', on_delete=models.CASCADE,
-                             verbose_name='Тип')
-
-    def __str__(self):
-        return f'{self.task} | {self.type}'
-
-    class Meta:
-        db_table = 'tasktypes'
-        verbose_name = 'Тип задачи'
-        verbose_name_plural = 'Типы задач'
+# class TaskType(models.Model):
+#     task = models.ForeignKey('tracker_app.Task', related_name='task_types', on_delete=models.CASCADE,
+#                              verbose_name='Задача')
+#     type = models.ForeignKey('tracker_app.Type', related_name='type_tasks', on_delete=models.CASCADE,
+#                              verbose_name='Тип')
+#
+#     def __str__(self):
+#         return f'{self.task} | {self.type}'
+#
+#     class Meta:
+#         db_table = 'tasktypes'
+#         verbose_name = 'Тип задачи'
+#         verbose_name_plural = 'Типы задач'
 
 
 class Status(models.Model):
