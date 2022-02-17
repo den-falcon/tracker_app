@@ -3,40 +3,44 @@
     "model": "tracker_app.project",
     "pk": 1,
     "fields": {
+        "name": "Тракер",
+        "description": "Простой трекер задач",
         "start_date": "2022-01-01",
         "end_date": "2022-02-04",
-        "name": "Тракер",
-        "description": "Простой трекер задач"
+        "users": []
     }
 },
 {
     "model": "tracker_app.project",
     "pk": 4,
     "fields": {
+        "name": "Третий тестовый",
+        "description": "Не хочет делать редирект, поэтому появился этот проэкт",
         "start_date": "2022-02-03",
         "end_date": null,
-        "name": "Третий тестовый",
-        "description": "Не хочет делать редирект, поэтому появился этот проэкт"
+        "users": []
     }
 },
 {
     "model": "tracker_app.project",
     "pk": 5,
     "fields": {
+        "name": "Еще один тестовый",
+        "description": "Вроде все работает)",
         "start_date": "2022-02-04",
         "end_date": "2022-03-04",
-        "name": "Еще один тестовый",
-        "description": "Вроде все работает)"
+        "users": []
     }
 },
 {
     "model": "tracker_app.project",
     "pk": 6,
     "fields": {
+        "name": "Последний тестовый",
+        "description": "Наверное это последний тестовый",
         "start_date": "2022-02-05",
         "end_date": "2022-02-06",
-        "name": "Последний тестовый",
-        "description": "Наверное это последний тестовый"
+        "users": []
     }
 },
 {
