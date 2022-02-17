@@ -29,7 +29,7 @@ class TaskCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'tracker_app.add_task'
 
     def has_permission(self):
-        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        project = Project.objects.get(pk=self.kwargs.get('project_pk'))
         return super().has_permission() and self.request.user in project.users.all()
 
     def form_valid(self, form):
@@ -48,7 +48,7 @@ class TaskUpdate(PermissionRequiredMixin, UpdateView):
     permission_required = 'tracker_app.change_task'
 
     def has_permission(self):
-        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        project = Project.objects.get(pk=self.kwargs.get('pk'))
         return super().has_permission() and self.request.user in project.users.all()
 
     def get_success_url(self):
@@ -62,5 +62,5 @@ class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = 'tracker_app.delete_task'
 
     def has_permission(self):
-        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        project = Project.objects.get(pk=self.kwargs.get('pk'))
         return super().has_permission() and self.request.user in project.users.all()
