@@ -11,7 +11,7 @@
                 <a class="nav-link" aria-current="page" href="{% url 'tracker_app:project-create' %}">Создать проэкт</a>
             </li>
         {% endif %}
-        {% if perms.tracker_app.add_task %}
+        {% if perms.tracker_app.add_task and request.user in object.users.all %}
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{% url 'tracker_app:task-create' object.pk %}">Добавить
                     задачу</a>
@@ -51,11 +51,11 @@
                 <div class="d-flex card-header bg-danger text-light">
                     <span class="flex-grow-1"><a class="text-reset"
                                                  href="{% url 'tracker_app:task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
-                    {% if perms.tracker_app.change_task %}
+                    {% if perms.tracker_app.change_task and request.user in object.users.all %}
                         <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i
                                 class="fs-4 ms-2 fas fa-edit"></i></a>
                     {% endif %}
-                    {% if perms.tracker_app.delete_task %}
+                    {% if perms.tracker_app.delete_task and request.user in object.users.all %}
                         <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i
                                 class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                     {% endif %}

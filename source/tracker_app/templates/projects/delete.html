@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="{% url "tracker_app:task-delete" project.pk %}" method="POST">
+            {% csrf_token %}
+            <h2>Вы действительно хотите удалить задачу? {{ project.name }}</h2>
+            <button type="submit" class="btn btn-outline-danger">Да</button>
+            <a class="btn btn-danger" href="{% url "projects-view" %}">Нет</a>
+        </form>
+    </div>
+{% endblock %}

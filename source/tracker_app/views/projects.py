@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import MultipleObjectMixin
@@ -52,12 +52,20 @@ class ProjectCreate(PermissionRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = "projects/create.html"
+    permission_required = 'tracker_app.add_project'
+
+    def has_permission(self):
+        return super().has_permission()
 
 
 class ProjectUpdate(PermissionRequiredMixin, UpdateView):
     model = Project
     template_name = 'tasks/update.html'
     form_class = ProjectForm
+    permission_required = 'tracker_app.change_project'
+
+    def has_permission(self):
+        return super().has_permission() and self.request.user in self.get_object().users.all()
 
     def get_success_url(self):
         return reverse("tracker_app:project-view", kwargs={"pk": self.object.pk})
@@ -65,9 +73,9 @@ class ProjectUpdate(PermissionRequiredMixin, UpdateView):
 
 class ProjectDelete(PermissionRequiredMixin, DeleteView):
     model = Project
+    template_name = 'projects/delete.html'
+    success_url = reverse_lazy('tracker_app:projects-view')
+    permission_required = 'tracker_app.delete_project'
 
-    def get(self, request, *args, **kwargs):
-        return super().delete(request, *args, **kwargs)
-
-    def get_success_url(self):
-        return reverse("tracker_app:projects-view")
+    def has_permission(self):
+        return super().has_permission() and self.request.user in self.get_object().users.all()

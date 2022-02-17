@@ -42,12 +42,12 @@
                                 <div class="d-flex card-header bg-danger text-light">
                                     <span class="flex-grow-1"><a class="text-reset"
                                                                  href="{% url 'tracker_app:project-view' project.pk %}">{{ project.name }} ({{ project.start_date }})</a></span>
-                                    {% if perms.tracker_app.change_project %}
+                                    {% if perms.tracker_app.change_project and request.user in project.users.all %}
                                         <a class="text-reset"
                                            href="{% url 'tracker_app:project-update' project.pk %}"><i
                                                 class="fs-4 ms-2 fas fa-edit"></i></a>
                                     {% endif %}
-                                    {% if perms.tracker_app.delete_project %}
+                                    {% if perms.tracker_app.delete_project and request.user in project.users.all %}
                                         <a class="text-reset"
                                            href="{% url 'tracker_app:project-delete' project.pk %}"><i
                                                 class="fs-4 ms-2 fas fa-trash-alt"></i></a>
