@@ -11,27 +11,6 @@ class TaskAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at', 'updated_at']
 
 
-# class TypeAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'name']
-#     list_filter = ['name']
-#     search_fields = ['name']
-#     fields = ['name']
-
-
-# class StatusAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'name']
-#     list_filter = ['name']
-#     search_fields = ['name']
-#     fields = ['name']
-
-
-# class TaskTypeAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'task', 'type']
-#     list_filter = ['task', 'type']
-#     search_fields = ['task', 'type']
-#     fields = ['task', 'type']
-
-
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Type)
 admin.site.register(Status)

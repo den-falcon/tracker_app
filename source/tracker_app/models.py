@@ -1,12 +1,16 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Project(models.Model):
-    start_date = models.DateField(verbose_name='Дата создания')
-    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
+    users = models.ManyToManyField(User, related_name='projects')
     name = models.CharField(max_length=150, verbose_name='Название')
     description = models.TextField(max_length=2000, verbose_name='Описание')
+    start_date = models.DateField(verbose_name='Дата создания')
+    end_date = models.DateField(null=True, blank=True, verbose_name='Дата окончания')
 
     def get_absolute_url(self):
         return reverse('project-view', kwargs={'pk': self.pk})
@@ -23,9 +27,9 @@ class Project(models.Model):
 class Task(models.Model):
     summary = models.CharField(max_length=150, verbose_name='Заголовок')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание')
-    status = models.ForeignKey('tracker_app.Status', related_name='Statuses', on_delete=models.PROTECT,
+    status = models.ForeignKey('tracker_app.Status', related_name='tasks', on_delete=models.PROTECT,
                                verbose_name='Статус')
-    project = models.ForeignKey('tracker_app.Project', related_name='Tasks', on_delete=models.CASCADE,
+    project = models.ForeignKey('tracker_app.Project', related_name='tasks', on_delete=models.CASCADE,
                                 verbose_name='Проэкт')
     created_at = models.DateField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateField(auto_now=True, verbose_name='Дата обновления')
