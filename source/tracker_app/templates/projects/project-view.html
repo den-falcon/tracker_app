@@ -6,12 +6,17 @@
 {% endblock %}
 {% block links %}
     {% if user.is_authenticated %}
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'tracker_app:project-create' %}">Создать проэкт</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'tracker_app:task-create' object.pk %}">Добавить задачу</a>
-        </li>
+        {% if perms.tracker_app.add_project %}
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'tracker_app:project-create' %}">Создать проэкт</a>
+            </li>
+        {% endif %}
+        {% if perms.tracker_app.add_task %}
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'tracker_app:task-create' object.pk %}">Добавить
+                    задачу</a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
         </li>
@@ -26,7 +31,7 @@
 {% endblock %}
 {% block description %}
     <div class="container">
-        <h1>{{  object.name }}</h1>
+        <h1>{{ object.name }}</h1>
         <h3>Описание:</h3>
         <p>{{ object.description }}</p>
         <p>Дата создания: {{ object.start_date }}</p>
@@ -44,10 +49,15 @@
         <div class="col-md-4 col-sm-6 mb-4">
             <div class="card h-100 ">
                 <div class="d-flex card-header bg-danger text-light">
-                    <span class="flex-grow-1"><a class="text-reset" href="{% url 'tracker_app:task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
-                    {% if user.is_authenticated %}
-                        <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-                        <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+                    <span class="flex-grow-1"><a class="text-reset"
+                                                 href="{% url 'tracker_app:task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
+                    {% if perms.tracker_app.change_task %}
+                        <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i
+                                class="fs-4 ms-2 fas fa-edit"></i></a>
+                    {% endif %}
+                    {% if perms.tracker_app.delete_task %}
+                        <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i
+                                class="fs-4 ms-2 fas fa-trash-alt"></i></a>
                     {% endif %}
                 </div>
                 <div class="card-body">
