@@ -5,14 +5,13 @@
     "fields": {
         "name": "Тракер",
         "description": "Простой трекер задач",
-        "start_date": "2022-01-01",
+        "created_at": "2022-01-01",
         "end_date": "2022-02-04",
         "users": [
             1,
             2,
             3,
-            4,
-            5
+            4
         ]
     }
 },
@@ -22,9 +21,12 @@
     "fields": {
         "name": "Третий тестовый",
         "description": "Не хочет делать редирект, поэтому появился этот проэкт",
-        "start_date": "2022-02-03",
+        "created_at": "2022-02-03",
         "end_date": null,
-        "users": []
+        "users": [
+            1,
+            2
+        ]
     }
 },
 {
@@ -33,7 +35,7 @@
     "fields": {
         "name": "Еще один тестовый",
         "description": "Вроде все работает)",
-        "start_date": "2022-02-04",
+        "created_at": "2022-02-04",
         "end_date": "2022-03-04",
         "users": []
     }
@@ -44,7 +46,7 @@
     "fields": {
         "name": "Последний тестовый",
         "description": "Наверное это последний тестовый",
-        "start_date": "2022-02-05",
+        "created_at": "2022-02-05",
         "end_date": "2022-02-06",
         "users": []
     }
@@ -53,7 +55,7 @@
     "model": "tracker_app.task",
     "pk": 10,
     "fields": {
-        "summary": "Придумать 4 задачи",
+        "name": "Придумать 4 задачи",
         "description": "Придумать 4 задачи и добавить их в базу данных",
         "status": 1,
         "project": 1,
@@ -66,7 +68,7 @@
     "model": "tracker_app.task",
     "pk": 11,
     "fields": {
-        "summary": "Купить энергетик",
+        "name": "Купить энергетик",
         "description": "Сходить в ближайший магазин и купить энергетик",
         "status": 2,
         "project": 1,
@@ -79,7 +81,7 @@
     "model": "tracker_app.task",
     "pk": 12,
     "fields": {
-        "summary": "Запилить соло bug на клавиатуре",
+        "name": "Запилить соло bug на клавиатуре",
         "description": "Запилить соло на клавиатуре не глядя на нее",
         "status": 3,
         "project": 1,
@@ -92,7 +94,7 @@
     "model": "tracker_app.task",
     "pk": 13,
     "fields": {
-        "summary": "Закипятить чайник",
+        "name": "Закипятить чайник",
         "description": "Набрать воды и поставить кипятиться воду",
         "status": 3,
         "project": 1,
@@ -105,7 +107,7 @@
     "model": "tracker_app.task",
     "pk": 14,
     "fields": {
-        "summary": "Разобраться в связи многие ко многим",
+        "name": "Разобраться в связи многие ко многим",
         "description": "Разобраться в связи многие ко многим и перестать путаться в запросах",
         "status": 2,
         "project": 1,
@@ -118,7 +120,7 @@
     "model": "tracker_app.task",
     "pk": 15,
     "fields": {
-        "summary": "Вот это совпадение!!!",
+        "name": "Вот это совпадение!!!",
         "description": "Вот это совпадение!!!",
         "status": 1,
         "project": 1,
@@ -131,7 +133,7 @@
     "model": "tracker_app.task",
     "pk": 17,
     "fields": {
-        "summary": "Task 100500",
+        "name": "Task 100500",
         "description": "ghgkjkyrhegesdvd",
         "status": 2,
         "project": 1,
@@ -144,7 +146,7 @@
     "model": "tracker_app.task",
     "pk": 18,
     "fields": {
-        "summary": "task20",
+        "name": "task20",
         "description": "jkfdskljf sdfkjsfks fjskf jsdj fskf s fks f sdf sdfsd fsd kfjsd f",
         "status": 2,
         "project": 1,
@@ -157,7 +159,7 @@
     "model": "tracker_app.task",
     "pk": 19,
     "fields": {
-        "summary": "task 10",
+        "name": "task 10",
         "description": "sdkfjsdk fskd fsjdf s f sdkf jkds jfoiewuiof eo eiow udoiu ed",
         "status": 2,
         "project": 1,
@@ -170,7 +172,7 @@
     "model": "tracker_app.task",
     "pk": 20,
     "fields": {
-        "summary": "Первая тестовая",
+        "name": "Первая тестовая",
         "description": "Это первая тестовая задача",
         "status": 1,
         "project": 4,
@@ -183,7 +185,7 @@
     "model": "tracker_app.task",
     "pk": 24,
     "fields": {
-        "summary": "Тест после исправления",
+        "name": "Тест после исправления",
         "description": "Обнаружилось что созданные задачи не сохраняют тип, добавил form.safe_m2m() надеюсь исправит положение",
         "status": 1,
         "project": 5,
@@ -196,7 +198,7 @@
     "model": "tracker_app.task",
     "pk": 25,
     "fields": {
-        "summary": "Актер массовки 1",
+        "name": "Актер массовки 1",
         "description": "Задача для массовки",
         "status": 1,
         "project": 5,
@@ -209,7 +211,7 @@
     "model": "tracker_app.task",
     "pk": 26,
     "fields": {
-        "summary": "Актер массовки 2",
+        "name": "Актер массовки 2",
         "description": "Задача создана для массовки",
         "status": 1,
         "project": 5,
@@ -222,7 +224,7 @@
     "model": "tracker_app.task",
     "pk": 27,
     "fields": {
-        "summary": "Актер массовки 3",
+        "name": "Актер массовки 3",
         "description": "Задача создана для массовки",
         "status": 1,
         "project": 5,
@@ -235,7 +237,7 @@
     "model": "tracker_app.task",
     "pk": 28,
     "fields": {
-        "summary": "Актер массовки 4",
+        "name": "Актер массовки 4",
         "description": "Задача создана для массовки",
         "status": 2,
         "project": 5,
@@ -248,7 +250,7 @@
     "model": "tracker_app.task",
     "pk": 29,
     "fields": {
-        "summary": "Актер массовки 5",
+        "name": "Актер массовки 5",
         "description": "Задача создана для массовки",
         "status": 1,
         "project": 4,
@@ -261,7 +263,7 @@
     "model": "tracker_app.task",
     "pk": 30,
     "fields": {
-        "summary": "Актер массовки 6",
+        "name": "Актер массовки 6",
         "description": "Задача создана для массовки",
         "status": 1,
         "project": 4,
@@ -274,7 +276,7 @@
     "model": "tracker_app.task",
     "pk": 31,
     "fields": {
-        "summary": "Актер массовки 7",
+        "name": "Актер массовки 7",
         "description": "Задача создана для массовки",
         "status": 3,
         "project": 4,
@@ -287,7 +289,7 @@
     "model": "tracker_app.task",
     "pk": 32,
     "fields": {
-        "summary": "Актер массовки 1",
+        "name": "Актер массовки 1",
         "description": "Задача создана для массовки",
         "status": 1,
         "project": 4,
@@ -300,7 +302,7 @@
     "model": "tracker_app.task",
     "pk": 33,
     "fields": {
-        "summary": "Актер массовки 8",
+        "name": "Актер массовки 8",
         "description": "Задача создана для массовки",
         "status": 1,
         "project": 4,
@@ -313,7 +315,7 @@
     "model": "tracker_app.task",
     "pk": 34,
     "fields": {
-        "summary": "Актер массовки 9",
+        "name": "Актер массовки 9",
         "description": "Эта задача созданна для массовки",
         "status": 1,
         "project": 6,
@@ -326,7 +328,7 @@
     "model": "tracker_app.task",
     "pk": 35,
     "fields": {
-        "summary": "Актер массовки 10",
+        "name": "Актер массовки 10",
         "description": "Эта задача созданна для массовки",
         "status": 1,
         "project": 6,
