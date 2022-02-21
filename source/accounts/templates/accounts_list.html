@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="mt-5">
+            <h3 class="mt-4 mb-0 fw-bold fs-2">Список пользователей</h3>
+            <hr class="text-danger mt-1">
+            <ul>
+                {% for obj in users_obj %}
+                <li>
+                    <a href="{% url 'accounts:profile' obj.pk %}">{{ obj.get_full_name|default:obj.username }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -14,7 +14,7 @@ class ProjectsView(SearchView):
     model = Project
     context_object_name = "projects"
     template_name = "projects/projects-view.html"
-    paginate_by = 3
+    paginate_by = 5
     paginate_orphans = 0
     search_fields = ['name__icontains', 'description__icontains']
 
@@ -23,7 +23,7 @@ class ProjectView(DetailView, MultipleObjectMixin):
     model = Project
     context_object_name = "project"
     template_name = 'projects/project-view.html'
-    paginate_by = 2
+    paginate_by = 5
     paginate_orphans = 0
     search_value = None
     form = None

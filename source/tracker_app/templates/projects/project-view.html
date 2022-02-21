@@ -17,6 +17,16 @@
                     задачу</a>
             </li>
         {% endif %}
+        {% if perms.accounts.accounts_list %}
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page"
+                   href="{% url 'accounts:accounts-list' %}">Саисок пользователей</a>
+            </li>
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page"
+               href="{% url 'accounts:profile' request.user.pk %}">Профиль</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
         </li>
@@ -31,15 +41,21 @@
 {% endblock %}
 {% block description %}
     <div class="container">
-    {% if perms.tracker_app.add_users and request.user in object.users.all %}
-        <a class="btn btn-danger" href="{% url 'tracker_app:add-users' object.pk %}">Редактировать участников</a>
-    {% endif %}
         <h1>{{ object.name }}</h1>
         <h3>Описание:</h3>
         <p>{{ object.description }}</p>
         <p>Дата создания: {{ object.created_at }}</p>
         {% if object.end_date %}
             <p>Дедлайн: {{ object.end_date }}</p>
+        {% endif %}
+        <p>Участники проэкта:
+            {% for user in object.users.all %}
+                <a href="{% url 'accounts:profile' user.pk %}">{{ user }}</a>{% if not forloop.last %}, {% else %}.
+            {% endif %}
+            {% endfor %}
+        </p>
+        {% if perms.tracker_app.add_users and request.user in object.users.all %}
+            <a class="btn btn-danger" href="{% url 'tracker_app:add-users' object.pk %}">Редактировать участников</a>
         {% endif %}
         <br>
     </div>
