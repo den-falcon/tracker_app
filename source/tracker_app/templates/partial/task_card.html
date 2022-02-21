@@ -1,12 +1,21 @@
 <div class="col-md-4 col-sm-6 mb-4">
-  <div class="card h-100 ">
-    <div class="d-flex card-header bg-danger text-light">
-        <span class="flex-grow-1"><a class="text-reset" href="{% url 'tracker_app:task-view' pk %}">{{ name }} ({{ date }})</a></span>
-        <a class="text-reset" href="{{ pk }}"><i class="fs-4 ms-2 fas fa-edit"></i></a>
-        <a class="text-reset" href="{{ pk }}"><i class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+    <div class="card h-100 ">
+        <div class="d-flex card-header bg-danger text-light">
+                                    <span class="flex-grow-1"><a class="text-reset"
+                                                                 href="{% url view_url obj.pk %}">{{ obj.name }} ({{ obj.created_at }})</a></span>
+            {% if change and request.user in project.users.all %}
+                <a class="text-reset"
+                   href="{% url update_url obj.pk %}"><i
+                        class="fs-4 ms-2 fas fa-edit"></i></a>
+            {% endif %}
+            {% if delete and request.user in project.users.all %}
+                <a class="text-reset"
+                   href="{% url delete_url obj.pk %}"><i
+                        class="fs-4 ms-2 fas fa-trash-alt"></i></a>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ obj.description }}</p>
+        </div>
     </div>
-    <div class="card-body">
-      <p class="card-text">{{ description }}</p>
-    </div>
-  </div>
 </div>

@@ -37,7 +37,7 @@
         <h1>{{ object.name }}</h1>
         <h3>Описание:</h3>
         <p>{{ object.description }}</p>
-        <p>Дата создания: {{ object.start_date }}</p>
+        <p>Дата создания: {{ object.created_at }}</p>
         {% if object.end_date %}
             <p>Дедлайн: {{ object.end_date }}</p>
         {% endif %}
@@ -48,25 +48,7 @@
     <h3 class="mt-4 mb-0 fw-bold fs-2">Задачи проэкта</h3>
 {% endblock %}
 {% block card %}
-    {% for task in object_list %}
-        <div class="col-md-4 col-sm-6 mb-4">
-            <div class="card h-100 ">
-                <div class="d-flex card-header bg-danger text-light">
-                    <span class="flex-grow-1"><a class="text-reset"
-                                                 href="{% url 'tracker_app:task-view' task.pk %}">{{ task.summary }} ({{ task.status }})</a></span>
-                    {% if perms.tracker_app.change_task and request.user in object.users.all %}
-                        <a class="text-reset" href="{% url 'tracker_app:task-update' task.pk %}"><i
-                                class="fs-4 ms-2 fas fa-edit"></i></a>
-                    {% endif %}
-                    {% if perms.tracker_app.delete_task and request.user in object.users.all %}
-                        <a class="text-reset" href="{% url 'tracker_app:task-delete' task.pk %}"><i
-                                class="fs-4 ms-2 fas fa-trash-alt"></i></a>
-                    {% endif %}
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{{ task.description }}</p>
-                </div>
-            </div>
-        </div>
+    {% for obj in object_list %}
+        {% include 'partial/task_card.html' with change=perms.tracker_app.change_task delete=perms.tracker_app.delete_task project=object view_url='tracker_app:task-view' update_url='tracker_app:task-update' delete_url='tracker_app:task-delete' %}
     {% endfor %}
 {% endblock %}

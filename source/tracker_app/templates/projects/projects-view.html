@@ -36,28 +36,8 @@
             <hr class="text-danger mt-1">
             <div class="row justify-content-start">
                 {% block card %}
-                    {% for project in projects %}
-                        <div class="col-md-4 col-sm-6 mb-4">
-                            <div class="card h-100 ">
-                                <div class="d-flex card-header bg-danger text-light">
-                                    <span class="flex-grow-1"><a class="text-reset"
-                                                                 href="{% url 'tracker_app:project-view' project.pk %}">{{ project.name }} ({{ project.start_date }})</a></span>
-                                    {% if perms.tracker_app.change_project and request.user in project.users.all %}
-                                        <a class="text-reset"
-                                           href="{% url 'tracker_app:project-update' project.pk %}"><i
-                                                class="fs-4 ms-2 fas fa-edit"></i></a>
-                                    {% endif %}
-                                    {% if perms.tracker_app.delete_project and request.user in project.users.all %}
-                                        <a class="text-reset"
-                                           href="{% url 'tracker_app:project-delete' project.pk %}"><i
-                                                class="fs-4 ms-2 fas fa-trash-alt"></i></a>
-                                    {% endif %}
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">{{ project.description }}</p>
-                                </div>
-                            </div>
-                        </div>
+                    {% for obj in projects %}
+                        {% include 'partial/task_card.html' with change=perms.tracker_app.change_project delete=perms.tracker_app.delete_project project=obj view_url='tracker_app:project-view' update_url='tracker_app:project-update' delete_url='tracker_app:project-delete' %}
                     {% endfor %}
                 {% endblock %}
             </div>

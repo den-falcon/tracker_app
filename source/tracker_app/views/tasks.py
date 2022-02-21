@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse, reverse_lazy
@@ -29,8 +29,7 @@ class TaskCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'tracker_app.add_task'
 
     def has_permission(self):
-        project = Project.objects.get(pk=self.kwargs.get('project_pk'))
-        return super().has_permission() and self.request.user in project.users.all()
+        return super().has_permission() and self.request.user in self.get_object().project.users.all()
 
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('project_pk'))
@@ -48,8 +47,7 @@ class TaskUpdate(PermissionRequiredMixin, UpdateView):
     permission_required = 'tracker_app.change_task'
 
     def has_permission(self):
-        project = Project.objects.get(pk=self.kwargs.get('pk'))
-        return super().has_permission() and self.request.user in project.users.all()
+        return super().has_permission() and self.request.user in self.get_object().project.users.all()
 
     def get_success_url(self):
         return reverse("tracker_app:project-view", kwargs={"pk": self.object.project.pk})
@@ -62,5 +60,4 @@ class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = 'tracker_app.delete_task'
 
     def has_permission(self):
-        project = Project.objects.get(pk=self.kwargs.get('pk'))
-        return super().has_permission() and self.request.user in project.users.all()
+        return super().has_permission() and self.request.user in self.get_object().project.users.all()

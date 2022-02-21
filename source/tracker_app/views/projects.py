@@ -31,7 +31,7 @@ class ProjectView(DetailView, MultipleObjectMixin):
     def get_context_data(self, **kwargs):
         self.form = self.get_form()
         self.search_value = self.get_search_value()
-        tasks = self.object.tasks.filter(Q(summary__icontains=self.search_value) |
+        tasks = self.object.tasks.filter(Q(name__icontains=self.search_value) |
                                          Q(description__icontains=self.search_value))
         context = super().get_context_data(object_list=tasks, **kwargs)
         context['form'] = SearchForm()
